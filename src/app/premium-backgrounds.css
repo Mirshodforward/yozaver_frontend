@@ -1,0 +1,593 @@
+.premium-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.premium-background *,
+.premium-background *::before,
+.premium-background *::after {
+  pointer-events: none;
+}
+.premium-background[data-paused="true"] *,
+.premium-background[data-paused="true"] *::before,
+.premium-background[data-paused="true"] *::after {
+  animation-play-state: paused !important;
+}
+.premium-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 48%,
+    #10152712 0%,
+    transparent 65%,
+    #03091630 100%
+  );
+}
+body:has(.premium-background) .background-decor {
+  display: none;
+}
+.scene-aurora {
+  background:
+    radial-gradient(ellipse at 60% 0%, #122d3c, transparent 68%), #080e1e;
+}
+.aurora-curtains {
+  position: absolute;
+  inset: -18% -12%;
+  transform: rotate(-20deg);
+}
+.aurora-curtains i {
+  position: absolute;
+  inset: 9% 14% 42%;
+  border-radius: 45% 35% 60% 35%;
+  background: linear-gradient(
+    100deg,
+    transparent 10%,
+    #6dd7b127 30%,
+    #56d6b879 50%,
+    #7971f03b 70%,
+    transparent
+  );
+  filter: blur(44px);
+  transform: skewY(-15deg);
+  animation: aurora-flow 22s ease-in-out infinite alternate;
+}
+.aurora-curtains i:nth-child(2) {
+  inset: 4% 1% 52% 34%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    #638cdb70,
+    #bca0ed60,
+    transparent
+  );
+  animation-delay: -9s;
+  animation-duration: 28s;
+}
+.aurora-curtains i:nth-child(3) {
+  inset: 25% 40% 14% -10%;
+  opacity: 0.48;
+  animation-delay: -16s;
+}
+@keyframes aurora-flow {
+  from {
+    transform: translate3d(-4%, -5%, 0) skewY(-15deg) scaleY(0.8);
+  }
+  to {
+    transform: translate3d(9%, 7%, 0) skewY(12deg) scaleY(1.2);
+  }
+}
+.scene-orbit {
+  background:
+    radial-gradient(ellipse at 75% 17%, #253653, transparent 55%),
+    linear-gradient(145deg, #101a2b, #090f1c);
+}
+.orbital-space {
+  position: absolute;
+  width: min(65vw, 850px);
+  aspect-ratio: 1;
+  right: -5%;
+  top: -22%;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  transform: rotate(-20deg);
+  opacity: 0.78;
+}
+.orbital-sun {
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #dbdfec,
+    #869abc 25%,
+    #334564 58%,
+    #0b1222 78%
+  );
+  box-shadow:
+    -12px -12px 60px #829ac923,
+    inset -15px -18px 35px #01071370;
+}
+.orbit-ring {
+  position: absolute;
+  inset: 13%;
+  border: 1px solid #a9c9f138;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: orbit-turn 44s linear infinite;
+}
+.orbit-ring i {
+  position: absolute;
+  top: 4%;
+  left: 17%;
+  width: 11%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 28% 25%,
+    #e5dff2,
+    #8f95bc 35%,
+    #253952 70%
+  );
+  box-shadow: 0 0 20px #c0d3f22c;
+  animation: orbit-counter 44s linear infinite;
+}
+.ring-two {
+  inset: 2%;
+  animation-duration: 65s;
+  animation-direction: reverse;
+  border-color: #829ed324;
+}
+.ring-two i {
+  animation-duration: 65s;
+  animation-direction: reverse;
+  width: 7%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #a6d8dd,
+    #518191 40%,
+    #123142 75%
+  );
+}
+.ring-three {
+  inset: -9%;
+  animation-duration: 90s;
+  opacity: 0.5;
+}
+.ring-three i {
+  animation-duration: 90s;
+  width: 4%;
+}
+.orbital-dust {
+  position: absolute;
+  inset: -30%;
+  border: 1px solid #afc6e409;
+  border-radius: 50%;
+  transform: rotateX(58deg);
+}
+@keyframes orbit-turn {
+  from {
+    transform: rotateX(62deg) rotateZ(0);
+  }
+  to {
+    transform: rotateX(62deg) rotateZ(360deg);
+  }
+}
+@keyframes orbit-counter {
+  from {
+    transform: rotateZ(0) rotateX(-62deg);
+  }
+  to {
+    transform: rotateZ(-360deg) rotateX(-62deg);
+  }
+}
+.scene-waves {
+  background:
+    radial-gradient(ellipse at 12% 0%, #427fdc, transparent 65%),
+    linear-gradient(135deg, #1e58ba, #0c2767);
+}
+.ocean-ribbons {
+  position: absolute;
+  inset: 0;
+  perspective: 800px;
+}
+.ocean-ribbons i {
+  position: absolute;
+  width: 160%;
+  height: 72%;
+  left: -30%;
+  top: calc(5% + var(--ribbon) * 10%);
+  border-radius: 43% 57% 0 0;
+  border-top: 1px solid #a0d3ff30;
+  background: linear-gradient(175deg, #7dd9ff16, #4b91f003 35%, transparent);
+  box-shadow: 0 -20px 60px #79c4ef05;
+  transform-origin: 50% 50%;
+  animation: ocean-drift calc(25s + var(--ribbon) * 5s) ease-in-out infinite
+    alternate;
+  animation-delay: calc(var(--ribbon) * -6s);
+}
+@keyframes ocean-drift {
+  from {
+    transform: translate3d(-5%, -7%, 0) rotate(-17deg) scaleY(0.8);
+  }
+  to {
+    transform: translate3d(5%, 9%, 0) rotate(-5deg) scaleY(1.12);
+  }
+}
+.scene-prism {
+  background:
+    radial-gradient(ellipse at 16% 10%, #fbf8ff, transparent 65%),
+    linear-gradient(130deg, #ede9fa, #d6d8ee);
+}
+.prism-space {
+  position: absolute;
+  inset: 0;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+.prism-position {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  left: 9%;
+  top: 14%;
+  transform-style: preserve-3d;
+  animation: prism-float 18s ease-in-out infinite alternate;
+}
+.prism-position-1 {
+  left: auto;
+  right: 12%;
+  top: 9%;
+  width: 220px;
+  height: 220px;
+  animation-delay: -8s;
+}
+.prism-position-2 {
+  left: 21%;
+  top: auto;
+  bottom: 5%;
+  width: 95px;
+  height: 95px;
+  animation-delay: -12s;
+  opacity: 0.6;
+}
+.prism-position-3 {
+  left: auto;
+  right: -2%;
+  top: auto;
+  bottom: 12%;
+  width: 125px;
+  height: 125px;
+  animation-delay: -4s;
+}
+.glass-prism {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: prism-turn 60s linear infinite;
+  --depth: 80px;
+}
+.prism-position-1 .glass-prism {
+  --depth: 110px;
+  animation-direction: reverse;
+}
+.prism-position-2 .glass-prism {
+  --depth: 47.5px;
+}
+.prism-position-3 .glass-prism {
+  --depth: 62.5px;
+}
+.prism-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #fff9;
+  background: linear-gradient(135deg, #ffffff52, #bdade929 55%, #88abc229);
+  box-shadow: inset 0 0 26px #fff3;
+}
+.face-0 {
+  transform: translateZ(var(--depth));
+}
+.face-1 {
+  transform: rotateY(180deg) translateZ(var(--depth));
+}
+.face-2 {
+  transform: rotateY(90deg) translateZ(var(--depth));
+}
+.face-3 {
+  transform: rotateY(-90deg) translateZ(var(--depth));
+}
+.face-4 {
+  transform: rotateX(90deg) translateZ(var(--depth));
+}
+.face-5 {
+  transform: rotateX(-90deg) translateZ(var(--depth));
+}
+@keyframes prism-turn {
+  from {
+    transform: rotateX(-20deg) rotateY(25deg) rotateZ(12deg);
+  }
+  to {
+    transform: rotateX(340deg) rotateY(385deg) rotateZ(12deg);
+  }
+}
+@keyframes prism-float {
+  from {
+    transform: translate3d(0, -10px, 0);
+  }
+  to {
+    transform: translate3d(8px, 18px, 30px);
+  }
+}
+.scene-stars {
+  background:
+    radial-gradient(ellipse at 80% 15%, #34365c80, transparent 55%),
+    radial-gradient(ellipse at 14% 85%, #20465b70, transparent 55%), #080f20;
+}
+.starfield-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.85;
+}
+.premium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+.premium-label {
+  margin-left: auto;
+  font-size: 8px;
+  letter-spacing: 1.1px;
+  color: #9b7ab7;
+  background: #f3ebfa;
+  border: 1px solid #ecdef7;
+  padding: 7px 9px;
+  border-radius: 6px;
+}
+.premium-choice {
+  text-align: left;
+  padding: 7px 7px 12px;
+  border: 1px solid #e8e4f2;
+  border-radius: 12px;
+  min-width: 0;
+  background: white;
+}
+.premium-choice:hover {
+  transform: translateY(-3px);
+  border-color: #c4b1e2;
+}
+.premium-choice.selected {
+  border-color: #b59af4;
+  box-shadow: 0 0 0 2px #c9b7ee20;
+}
+.premium-swatch {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 112px;
+  border-radius: 8px;
+  color: #fff;
+  isolation: isolate;
+}
+.premium-swatch > span {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-weight: 650;
+  opacity: 0.8;
+}
+.premium-swatch small {
+  position: absolute;
+  right: 9px;
+  bottom: 9px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  background: #ffffff15;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+.premium-swatch i {
+  position: absolute;
+  display: block;
+}
+.swatch-aurora {
+  background: #0c1828;
+}
+.swatch-aurora i {
+  width: 100%;
+  height: 65%;
+  top: 5%;
+  left: -5%;
+  background: linear-gradient(120deg, #6ae2b500, #6ae2b580, #7761dc80);
+  filter: blur(15px);
+  border-radius: 50%;
+  transform: rotate(-28deg);
+}
+.swatch-aurora i:nth-child(2) {
+  left: 45%;
+  top: -10%;
+  transform: rotate(40deg);
+}
+.swatch-aurora i:nth-child(3) {
+  display: none;
+}
+.swatch-orbit {
+  background: linear-gradient(140deg, #2e3c57, #101829);
+}
+.swatch-orbit i:first-child {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  top: 20px;
+  left: 45%;
+  background: radial-gradient(
+    circle at 27% 20%,
+    #d0d6e3,
+    #687a9e 40%,
+    #182536 78%
+  );
+}
+.swatch-orbit i:nth-child(2) {
+  width: 150px;
+  height: 50px;
+  top: 27px;
+  left: 20%;
+  border: 1px solid #b0c7e870;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+.swatch-orbit i:nth-child(3) {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  top: 32px;
+  left: 27%;
+  background: radial-gradient(circle at 25% 25%, #cad9e3, #567c8f);
+}
+.swatch-waves {
+  background: linear-gradient(130deg, #3977d0, #163c84);
+}
+.swatch-waves i {
+  width: 150%;
+  height: 90%;
+  top: 30%;
+  left: -20%;
+  border-top: 1px solid #92cdf760;
+  border-radius: 50%;
+  background: #addbff0c;
+  transform: rotate(-20deg);
+}
+.swatch-waves i:nth-child(2) {
+  top: 50%;
+}
+.swatch-waves i:nth-child(3) {
+  top: 70%;
+}
+.swatch-prism {
+  background: linear-gradient(135deg, #efebf9, #cbd1ed);
+  color: #746486;
+}
+.swatch-prism i {
+  width: 50px;
+  height: 50px;
+  top: 20%;
+  left: 27%;
+  background: linear-gradient(135deg, #fff9, #b49bcc33);
+  border: 1px solid #fffb;
+  transform: rotate(-25deg) skew(10deg, 10deg);
+  box-shadow: 12px 10px 0 #a699c41a;
+}
+.swatch-prism i:nth-child(2) {
+  left: 66%;
+  top: 38%;
+  width: 28px;
+  height: 28px;
+  transform: rotate(25deg) skew(10deg, 10deg);
+}
+.swatch-prism i:nth-child(3) {
+  display: none;
+}
+.swatch-stars {
+  background:
+    radial-gradient(ellipse at 80% 0%, #3b3f6880, transparent), #0c142a;
+}
+.swatch-stars i {
+  width: 2px;
+  height: 2px;
+  background: #d4e0fd;
+  border-radius: 50%;
+  top: 23%;
+  left: 45%;
+  box-shadow:
+    20px 38px #bbcbf5,
+    -35px 55px #94b4e580,
+    64px 65px #cedbfd,
+    -60px -12px #8496c199,
+    80px -9px #839cc5,
+    -13px 12px #a9b9d560;
+}
+.swatch-stars i:nth-child(2) {
+  top: 45%;
+  left: 20%;
+  transform: scale(0.6);
+}
+.swatch-stars i:nth-child(3) {
+  top: 75%;
+  left: 80%;
+  transform: scale(0.5);
+}
+.premium-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px 0;
+  color: #39324e;
+}
+.premium-caption strong {
+  font-size: 11px;
+  font-weight: 550;
+}
+.premium-caption svg {
+  color: #a98ec7;
+}
+.premium-description {
+  display: block;
+  font-size: 9px;
+  color: #a89abb;
+  margin: 5px 5px 0;
+  line-height: 1.6;
+}
+.premium-note {
+  font-size: 10px;
+  color: #a696b7;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+@media (max-width: 800px) {
+  .orbital-space {
+    width: 100vw;
+    right: -23%;
+    top: -8%;
+  }
+  .prism-position {
+    left: -15%;
+    transform: scale(0.7);
+  }
+  .prism-position-1 {
+    right: -27%;
+  }
+  .prism-position-2 {
+    left: 12%;
+  }
+  .aurora-curtains i {
+    filter: blur(28px);
+  }
+}
+@media (max-width: 550px) {
+  .premium-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .premium-label {
+    margin-left: 0;
+  }
+  .premium-swatch {
+    height: 98px;
+  }
+  .premium-description {
+    font-size: 8px;
+  }
+  .prism-position-3 {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-background *,
+  .premium-background *::before,
+  .premium-background *::after {
+    animation-play-state: paused !important;
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import { AuthProvider } from "@/lib/auth-context";
 import { BackgroundDecor } from "@/components/BackgroundDecor";
 import { Navbar } from "@/components/Navbar";
@@ -63,6 +64,7 @@ export default function RootLayout({
             </AudioProvider>
           </SettingsProvider>
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
